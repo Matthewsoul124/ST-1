@@ -1,56 +1,51 @@
+// Copyright 2025 UNN-CS
 #include "alg.h"
 
-bool isNumberPrime(uint64_t number) {
-  if (number <= 1) {
+bool checkPrime(uint64_t value) {
+  if (value <= 1) {
     return false;
   }
-  
-  for (uint64_t divisor = 2; divisor * divisor <= number; ++divisor) {
-    if (number % divisor == 0) {
+  for (uint64_t i = 2; i * i <= value; ++i) {
+    if (value % i == 0) {
       return false;
     }
   }
   return true;
 }
 
-uint64_t findNthPrime(uint64_t position) {
-  if (position == 0) {
+uint64_t nPrime(uint64_t n) {
+  if (n == 0) {
     return 0;
   }
-
-  uint64_t primeCount = 0;
-  uint64_t currentNumber = 2;
-
-  while (primeCount < position) {
-    if (isNumberPrime(currentNumber)) {
-      primeCount++;
+  uint64_t count = 0;
+  uint64_t num = 2;
+  while (count < n) {
+    if (checkPrime(num)) {
+      count++;
     }
-    if (primeCount < position) {
-      currentNumber++;
+    if (count < n) {
+      num++;
     }
   }
-
-  return currentNumber;
+  return num;
 }
 
-uint64_t findNextPrimeNumber(uint64_t current) {
-  uint64_t nextNumber = current + 1;
-  
-  while (!isNumberPrime(nextNumber)) {
-    nextNumber++;
+uint64_t nextPrime(uint64_t value) {
+  uint64_t num = value + 1;
+  while (true) {
+    if (checkPrime(num)) {
+      return num;
+    }
+    num++;
   }
-  
-  return nextNumber;
 }
 
-uint64_t calculatePrimesSum(uint64_t upperBound) {
-  uint64_t totalSum = 0;
-  
-  for (uint64_t number = 2; number < upperBound; ++number) {
-    if (isNumberPrime(number)) {
-      totalSum += number;
+uint64_t sumPrime(uint64_t hbound) {
+  uint64_t sum = 0;
+  for (uint64_t i = 2; i < hbound; ++i) {
+    if (checkPrime(i)) {
+      sum += i;
     }
   }
-  
-  return totalSum;
+  return sum;
 } 

@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 #include <cstdint>
-#include "alg.h"
+#include "../src/alg.h"
 
 
 TEST(st1, sumPrime1) {

@@ -9,4 +9,4 @@ uint64_t getNthPrime(uint64_t n);
 uint64_t getNextPrime(uint64_t value);
 uint64_t getSumOfPrimes(uint64_t hbound);
 
-#endif // SRC_ALG_H_
+#endif  // SRC_ALG_H_

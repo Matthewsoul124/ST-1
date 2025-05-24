@@ -1,6 +1,6 @@
 // Copyright 2025 UNN-CS
 
-#include "alg.h"
+#include "../include/alg.h"
 #include <cstdint>
 
 bool isPrime(uint64_t value) {
@@ -32,10 +32,13 @@ uint64_t getNthPrime(uint64_t n) {
 
   while (count < n) {
     if (isPrime(num)) {
+      if (count == UINT64_MAX) { // Check for counter overflow
+        return 0;
+      }
       ++count;
     }
     if (count < n) {
-      if (num == UINT64_MAX) {
+      if (num == UINT64_MAX) { // Check for overflow
         return 0;
       }
       ++num;
@@ -50,7 +53,7 @@ uint64_t getNextPrime(uint64_t value) {
     return 2;
   }
 
-  if (value == UINT64_MAX) {
+  if (value == UINT64_MAX) { // Check for maximum value
     return 0;
   }
 
@@ -59,7 +62,7 @@ uint64_t getNextPrime(uint64_t value) {
     if (isPrime(num)) {
       return num;
     }
-    if (num == UINT64_MAX) {
+    if (num == UINT64_MAX) { // Check for maximum value
       return 0;
     }
     ++num;
@@ -71,9 +74,12 @@ uint64_t getSumOfPrimes(uint64_t hbound) {
     return 0;
   }
 
-  uint64_t sum = 2;
-  for (uint64_t i = 3; i < hbound; i += 2) {
+  uint64_t sum = 2; // Start with 2 as it's the first prime number
+  for (uint64_t i = 3; i < hbound; i += 2) { // Check only odd numbers
     if (isPrime(i)) {
+      if (sum > UINT64_MAX - i) { // Check for sum overflow
+        return 0;
+      }
       sum += i;
     }
   }

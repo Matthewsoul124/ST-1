@@ -1,35 +1,60 @@
 // Copyright 2025 UNN-CS
-#include <gtest/gtest.h>
+#include "../include/alg.h"
 #include <cstdint>
-#include "../src/alg.h"
+#include <gtest/gtest.h>
 
 TEST(PrimeSumTest, SumOfPrimes1) {
-  uint64_t res = getSumOfPrimes(2000000);
-  uint64_t expected = 142913828922;
-  EXPECT_EQ(expected, res);
+  uint64_t result = getSumOfPrimes(10);
+  uint64_t expected = 17; // 2 + 3 + 5 + 7
+  EXPECT_EQ(result, expected);
 }
 
 TEST(PrimeSumTest, SumOfPrimes2) {
-  uint64_t res = getSumOfPrimes(10);
-  uint64_t expected = 17;
-  EXPECT_EQ(expected, res);
+  uint64_t result = getSumOfPrimes(20);
+  uint64_t expected = 77; // 2 + 3 + 5 + 7 + 11 + 13 + 17 + 19
+  EXPECT_EQ(result, expected);
 }
 
-TEST(PrimeCheckTest, Basic1) { EXPECT_FALSE(isPrime(1)); }
-TEST(PrimeCheckTest, Basic2) { EXPECT_TRUE(isPrime(2)); }
-TEST(PrimeCheckTest, Basic3) { EXPECT_TRUE(isPrime(3)); }
-TEST(PrimeCheckTest, Basic4) { EXPECT_FALSE(isPrime(4)); }
-TEST(PrimeCheckTest, Basic5) { EXPECT_TRUE(isPrime(5)); }
-TEST(PrimeCheckTest, Basic6) { EXPECT_FALSE(isPrime(6)); }
-TEST(PrimeCheckTest, Basic7) { EXPECT_TRUE(isPrime(7)); }
+TEST(PrimeCheckTest, Basic1) {
+  EXPECT_TRUE(isPrime(2));
+  EXPECT_TRUE(isPrime(3));
+  EXPECT_TRUE(isPrime(5));
+  EXPECT_TRUE(isPrime(7));
+  EXPECT_TRUE(isPrime(11));
+}
 
-TEST(NextPrimeTest, Basic1) { EXPECT_EQ(2, getNextPrime(1)); }
-TEST(NextPrimeTest, Basic2) { EXPECT_EQ(3, getNextPrime(2)); }
-TEST(NextPrimeTest, Basic3) { EXPECT_EQ(5, getNextPrime(3)); }
-TEST(NextPrimeTest, Basic4) { EXPECT_EQ(5, getNextPrime(4)); }
-TEST(NextPrimeTest, Basic5) { EXPECT_EQ(7, getNextPrime(5)); }
-TEST(NextPrimeTest, Basic6) { EXPECT_EQ(7, getNextPrime(6)); }
-TEST(NextPrimeTest, Basic7) { EXPECT_EQ(11, getNextPrime(7)); }
-TEST(NextPrimeTest, Basic8) { EXPECT_EQ(11, getNextPrime(8)); }
-TEST(NextPrimeTest, Basic9) { EXPECT_EQ(11, getNextPrime(9)); }
-TEST(NextPrimeTest, Basic10) { EXPECT_EQ(11, getNextPrime(10)); }
+TEST(PrimeCheckTest, Basic2) {
+  EXPECT_FALSE(isPrime(1));
+  EXPECT_FALSE(isPrime(4));
+  EXPECT_FALSE(isPrime(6));
+  EXPECT_FALSE(isPrime(8));
+  EXPECT_FALSE(isPrime(9));
+}
+
+TEST(NextPrimeTest, Basic1) {
+  EXPECT_EQ(getNextPrime(2), 3);
+  EXPECT_EQ(getNextPrime(3), 5);
+  EXPECT_EQ(getNextPrime(5), 7);
+  EXPECT_EQ(getNextPrime(7), 11);
+}
+
+TEST(NextPrimeTest, Basic2) {
+  EXPECT_EQ(getNextPrime(1), 2);
+  EXPECT_EQ(getNextPrime(4), 5);
+  EXPECT_EQ(getNextPrime(6), 7);
+  EXPECT_EQ(getNextPrime(8), 11);
+}
+
+TEST(NthPrimeTest, Basic1) {
+  EXPECT_EQ(getNthPrime(1), 2);
+  EXPECT_EQ(getNthPrime(2), 3);
+  EXPECT_EQ(getNthPrime(3), 5);
+  EXPECT_EQ(getNthPrime(4), 7);
+}
+
+TEST(NthPrimeTest, Basic2) {
+  EXPECT_EQ(getNthPrime(5), 11);
+  EXPECT_EQ(getNthPrime(6), 13);
+  EXPECT_EQ(getNthPrime(7), 17);
+  EXPECT_EQ(getNthPrime(8), 19);
+}

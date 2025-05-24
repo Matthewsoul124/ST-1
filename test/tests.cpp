@@ -1,7 +1,7 @@
 // Copyright 2025 UNN-CS
-
 #include "../src/alg.h"
 #include <cstdint>
+
 #include <gtest/gtest.h>
 
 TEST(PrimeSumTest, SumOfPrimes1) {

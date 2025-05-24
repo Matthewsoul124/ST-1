@@ -28,6 +28,9 @@ uint64_t nPrime(uint64_t n) {
       ++count;
     }
     if (count < n) {
+      if (num == UINT64_MAX) {
+        return 0;
+      }
       ++num;
     }
   }
@@ -41,10 +44,19 @@ uint64_t nextPrime(uint64_t value) {
   }
 
   uint64_t num = value + 1;
-  while (!checkPrime(num)) {
+  if (num == 0) {
+    return 0;
+  }
+
+  while (true) {
+    if (checkPrime(num)) {
+      return num;
+    }
+    if (num == UINT64_MAX) {
+      return 0;
+    }
     ++num;
   }
-  return num;
 }
 
 uint64_t sumPrime(uint64_t hbound) {

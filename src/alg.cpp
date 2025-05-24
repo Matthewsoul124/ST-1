@@ -1,8 +1,10 @@
 // Copyright 2025 UNN-CS
 
 #include "alg.h"
+#include <cstdint>
 
-bool checkPrime(uint64_t value) {
+
+bool isPrime(uint64_t value) {
   if (value <= 1) {
     return false;
   }
@@ -21,7 +23,7 @@ bool checkPrime(uint64_t value) {
   return true;
 }
 
-uint64_t nPrime(uint64_t n) {
+uint64_t getNthPrime(uint64_t n) {
   if (n == 0) {
     return 0;
   }
@@ -30,7 +32,7 @@ uint64_t nPrime(uint64_t n) {
   uint64_t num = 2;
 
   while (count < n) {
-    if (checkPrime(num)) {
+    if (isPrime(num)) {
       ++count;
     }
     if (count < n) {
@@ -44,7 +46,7 @@ uint64_t nPrime(uint64_t n) {
   return num;
 }
 
-uint64_t nextPrime(uint64_t value) {
+uint64_t getNextPrime(uint64_t value) {
   if (value < 2) {
     return 2;
   }
@@ -55,7 +57,7 @@ uint64_t nextPrime(uint64_t value) {
 
   uint64_t num = value + 1;
   while (true) {
-    if (checkPrime(num)) {
+    if (isPrime(num)) {
       return num;
     }
     if (num == UINT64_MAX) {
@@ -65,14 +67,14 @@ uint64_t nextPrime(uint64_t value) {
   }
 }
 
-uint64_t sumPrime(uint64_t hbound) {
+uint64_t getSumOfPrimes(uint64_t hbound) {
   if (hbound <= 2) {
     return 0;
   }
 
   uint64_t sum = 2;
   for (uint64_t i = 3; i < hbound; i += 2) {
-    if (checkPrime(i)) {
+    if (isPrime(i)) {
       sum += i;
     }
   }

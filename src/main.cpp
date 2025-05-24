@@ -1,6 +1,6 @@
 // Copyright 2025 UNN-CS
-#include "alg.h"
 #include <iostream>
+#include "alg.h"
 
 int main() {
   std::cout << "Prime number functions test program" << std::endl;

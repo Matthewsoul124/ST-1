@@ -1,8 +1,7 @@
 // Copyright 2025 UNN-CS
-#include "../src/alg.h"
-#include <cstdint>
-
 #include <gtest/gtest.h>
+#include <cstdint>
+#include "../src/alg.h"
 
 TEST(PrimeSumTest, SumOfPrimes1) {
   uint64_t res = getSumOfPrimes(2000000);

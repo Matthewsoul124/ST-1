@@ -31,7 +31,6 @@ uint64_t nPrime(uint64_t n) {
       ++num;
     }
   }
-
   return num;
 }
 
@@ -61,6 +60,5 @@ uint64_t sumPrime(uint64_t hbound) {
       sum += i;
     }
   }
-
   return sum;
 }

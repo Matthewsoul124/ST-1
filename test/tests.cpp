@@ -1,7 +1,7 @@
 // Copyright 2025 UNN-CS
-#include "../include/alg.h"
-#include <cstdint>
 #include <gtest/gtest.h>
+#include <cstdint>
+#include "../include/alg.h"
 
 TEST(PrimeSumTest, SumOfPrimes1) {
   uint64_t result = getSumOfPrimes(10);

@@ -40,13 +40,19 @@ uint64_t nextPrime(uint64_t value) {
   }
 
   uint64_t num = value + 1;
-  while (num != 0) { // Проверка на переполнение
+  if (num == 0) { // Проверка на переполнение
+    return 0;
+  }
+
+  while (true) {
     if (checkPrime(num)) {
       return num;
     }
+    if (num == UINT64_MAX) { // Проверка на максимальное значение
+      return 0;
+    }
     ++num;
   }
-  return 0; // Вернуть 0, если переполнение
 }
 
 uint64_t sumPrime(uint64_t hbound) {

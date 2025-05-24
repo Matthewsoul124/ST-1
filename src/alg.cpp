@@ -43,11 +43,11 @@ uint64_t nextPrime(uint64_t value) {
     return 2;
   }
 
-  uint64_t num = value + 1;
-  if (num == 0) {
+  if (value == UINT64_MAX) {
     return 0;
   }
 
+  uint64_t num = value + 1;
   while (true) {
     if (checkPrime(num)) {
       return num;

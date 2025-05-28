@@ -58,3 +58,17 @@ TEST(NthPrimeTest, Basic2) {
   EXPECT_EQ(getNthPrime(7), 17);
   EXPECT_EQ(getNthPrime(8), 19);
 }
+
+TEST(PrimeSumTest, EdgeCases) {
+  EXPECT_EQ(getSumOfPrimes(0), 0);
+  EXPECT_EQ(getSumOfPrimes(1), 0);
+  EXPECT_EQ(getSumOfPrimes(2), 0);
+  EXPECT_EQ(getSumOfPrimes(3), 2);
+}
+
+TEST(NextPrimeTest, EdgeCases) {
+  EXPECT_EQ(getNextPrime(0), 2);
+  EXPECT_EQ(getNextPrime(1), 2);
+  EXPECT_EQ(getNextPrime(UINT64_MAX - 1), 0); // Проверка на переполнение
+}
+
